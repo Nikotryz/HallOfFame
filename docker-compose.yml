@@ -1,0 +1,46 @@
+﻿name: hall-of-fame-app
+
+networks:
+  hall-of-fame-dev:
+    driver: bridge
+
+services:
+
+  api:
+    container_name: web-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - hall-of-fame-dev
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    restart: on-failure
+    environment:
+      - ConnectionStrings__PostgreSQL=Host=postgres_db;Port=5432;Database=hall_of_fame_db;Username=postgres;Password=900440;Timeout=30;CommandTimeout=300
+
+  postgres_db:
+    container_name: postgres_db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 900440
+      POSTGRES_DB: hall_of_fame_db
+    ports:
+      - "5432:5432"
+    networks:
+      - hall-of-fame-dev
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d hall_of_fame_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

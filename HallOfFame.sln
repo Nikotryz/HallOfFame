@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame", "HallOfFame\HallOfFame.csproj", "{05EF00FB-733A-4C1D-AFEC-24A3396C45BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame.Tests", "HallOfFameTests\HallOfFame.Tests.csproj", "{895A71CA-A1F8-41E5-B136-9158A68703B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{05EF00FB-733A-4C1D-AFEC-24A3396C45BA} = {05EF00FB-733A-4C1D-AFEC-24A3396C45BA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05EF00FB-733A-4C1D-AFEC-24A3396C45BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05EF00FB-733A-4C1D-AFEC-24A3396C45BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05EF00FB-733A-4C1D-AFEC-24A3396C45BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05EF00FB-733A-4C1D-AFEC-24A3396C45BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895A71CA-A1F8-41E5-B136-9158A68703B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895A71CA-A1F8-41E5-B136-9158A68703B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895A71CA-A1F8-41E5-B136-9158A68703B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895A71CA-A1F8-41E5-B136-9158A68703B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5B9F505-61E6-43BE-B486-67496BD60A36}
+	EndGlobalSection
+EndGlobal
