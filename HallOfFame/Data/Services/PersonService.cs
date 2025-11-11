@@ -7,28 +7,31 @@ using HallOfFame.Data.Validators;
 
 namespace HallOfFame.Data.Services;
 
+/// <summary>
+/// Реализация интерфейса <seealso cref="IPersonService"/>.
+/// </summary>
 public class PersonService : IPersonService
 {
     private readonly IMapper _mapper;
-    private readonly IPersonRepository _personRepository;
+    private readonly IPersonRepository _repository;
     private readonly IPersonValidator _validator;
 
-    public PersonService(IMapper mapper, IPersonRepository personRepository, IPersonValidator validator)
+    public PersonService(IMapper mapper, IPersonRepository repository, IPersonValidator validator)
     {
         _mapper = mapper;
-        _personRepository = personRepository;
+        _repository = repository;
         _validator = validator;
     }
 
     public async Task<IEnumerable<PersonResponseDto>> GetAllPersonsAsync()
     {
-        var persons = await _personRepository.GetAllPersonsAsync();
+        var persons = await _repository.GetAllPersonsAsync();
         return _mapper.Map<IEnumerable<PersonResponseDto>>(persons);
     }
 
     public async Task<PersonResponseDto> GetPersonByIdAsync(long id)
     {
-        var person = await _personRepository.GetPersonByIdAsync(id);
+        var person = await _repository.GetPersonByIdAsync(id);
 
         if (person == null)
         {
@@ -47,7 +50,7 @@ public class PersonService : IPersonService
         }
         
         var person = _mapper.Map<Person>(personDto);
-        await _personRepository.CreatePersonAsync(person);
+        await _repository.CreatePersonAsync(person);
 
         var result = _mapper.Map<PersonResponseDto>(person);
         return ServiceResult<PersonResponseDto>.Success(result);
@@ -61,13 +64,13 @@ public class PersonService : IPersonService
             throw new ValidationException(validationResult.ErrorMessage);
         }
         
-        var existingPerson = await _personRepository.GetPersonByIdAsync(id);
+        var existingPerson = await _repository.GetPersonByIdAsync(id);
         if (existingPerson == null)
         {
             throw new NotFoundException($"Person with id '{id}' does not exist");
         }
 
-        _personRepository.DeleteSkills(existingPerson.Skills);
+        _repository.DeleteSkills(existingPerson.Skills);
 
         var person = _mapper.Map<Person>(personDto);
 
@@ -75,7 +78,7 @@ public class PersonService : IPersonService
         existingPerson.DisplayName = person.DisplayName;
         existingPerson.Skills = person.Skills.ToList();
 
-        var updatePerson = await _personRepository.UpdatePersonAsync(existingPerson);
+        var updatePerson = await _repository.UpdatePersonAsync(existingPerson);
 
         var result = _mapper.Map<PersonResponseDto>(updatePerson);
         return ServiceResult<PersonResponseDto>.Success(result);
@@ -83,6 +86,6 @@ public class PersonService : IPersonService
 
     public async Task DeletePersonAsync(long id)
     {
-        await _personRepository.DeletePersonAsync(id);
+        await _repository.DeletePersonAsync(id);
     }
 }

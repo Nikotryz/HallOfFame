@@ -1,5 +1,8 @@
 ﻿namespace HallOfFame.Logging
 {
+    /// <summary>
+    /// Логгер, работающий с файлами.
+    /// </summary>
     public class FileLogger : ILogger
     {
         private string _filePath;

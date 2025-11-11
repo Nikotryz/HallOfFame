@@ -1,5 +1,8 @@
 ﻿namespace HallOfFame.Exceptions;
 
+/// <summary>
+/// Исключение, которое вызывается при статусе ответа 400 (Bad Request), то есть при введении пользователем некорректных данных.
+/// </summary>
 public class ValidationException : Exception
 {
     public ValidationException() { }

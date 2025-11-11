@@ -2,6 +2,9 @@
 
 namespace HallOfFame.Data.Validators;
 
+/// <summary>
+/// Реализация интерфейса <seealso cref="IPersonValidator"/>.
+/// </summary>
 public class PersonValidator : IPersonValidator
 {
     public ValidationResult Validate(PersonUpsertDto? personDto)

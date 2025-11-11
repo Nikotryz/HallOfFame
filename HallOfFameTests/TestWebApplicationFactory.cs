@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HallOfFame.Tests;
 
+/// <summary>
+/// Данный класс как бы подменяет окружение настоящего приложения, что позволяет проводить тесты в изолированной среде.
+/// </summary>
 public class TestWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)

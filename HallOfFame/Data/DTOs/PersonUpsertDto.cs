@@ -1,5 +1,8 @@
 ﻿namespace HallOfFame.Data.DTOs;
 
+/// <summary>
+/// DTO для создания/обновления сотрудника. (Update/Insert --> Upsert).
+/// </summary>
 public class PersonUpsertDto
 {
     public required string Name { get; set; }

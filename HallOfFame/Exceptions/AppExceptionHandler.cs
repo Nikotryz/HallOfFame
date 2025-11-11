@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HallOfFame.Exceptions;
 
+/// <summary>
+/// Глобальный обработчик исключений для приложения.
+/// Перехватывает исключения и отправляет пользователю такие ответы, как 400 (Bad Request), 404 (Not Found), 500 (Internal Server Error).
+/// </summary>
 public class AppExceptionHandler : IExceptionHandler
 {
     private readonly ILogger<AppExceptionHandler> _logger;

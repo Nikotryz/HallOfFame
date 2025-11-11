@@ -60,7 +60,6 @@ namespace HallOfFame
             {
                 var db = scope.ServiceProvider.GetRequiredService<HallOfFameDbContext>();
                 db.Database.Migrate();
-                db.Database.EnsureCreated();
             }
 
             app.UseExceptionHandler();

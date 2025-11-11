@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HallOfFame.Data;
 
+/// <summary>
+/// Класс базы данных, определяющий ее структуру, таблицы, методы и т.д. Использует Entity Framework для создания БД из кода.
+/// </summary>
 public partial class HallOfFameDbContext : DbContext
 {
     public HallOfFameDbContext() { }

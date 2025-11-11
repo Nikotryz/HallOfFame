@@ -1,5 +1,9 @@
 namespace HallOfFame.Data.Services;
 
+/// <summary>
+/// Класс для упрощения работы с ответами, в которых нужно передать какие-либо данные.
+/// </summary>
+/// <typeparam name="T">DTO, которое нужно передать в качестве ответа.</typeparam>
 public class ServiceResult<T>
 {
     public bool IsSuccess { get; set; }

@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HallOfFame.Data.Repositories;
 
+/// <summary>
+/// Реализация интерфейса <seealso cref="IPersonRepository"/>.
+/// </summary>
 public class PersonRepository : IPersonRepository
 {
     private readonly HallOfFameDbContext _db;

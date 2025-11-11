@@ -2,6 +2,9 @@
 
 namespace HallOfFame.Data.Repositories;
 
+/// <summary>
+/// Общий интерфейс, отвечающий за взаимодействие с БД и манипуляции с данными сотрудников.
+/// </summary>
 public interface IPersonRepository
 {
     Task<IEnumerable<Person>> GetAllPersonsAsync();
